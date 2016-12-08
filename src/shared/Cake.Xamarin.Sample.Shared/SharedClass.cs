@@ -1,5 +1,4 @@
-﻿using System;
-namespace Cake.Xamarin.Sample.Shared
+﻿namespace Cake.Xamarin.Sample.Shared
 {
     public class SharedClass
     {

@@ -56,4 +56,3 @@ namespace Cake.Xamarin.Sample.iOS
         }
     }
 }
-

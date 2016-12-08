@@ -25,4 +25,3 @@ namespace Cake.Xamarin.Sample.Android
         }
     }
 }
-
