@@ -128,9 +128,9 @@ Task("Build-iOS")
 	});
 
 Task("Default")
-	.IsDependentOn("Run-StyleCop")	
     .IsDependentOn("Build-Android")
     .IsDependentOn("Build-iOS")
+	.IsDependentOn("Run-StyleCop")
 	.IsDependentOn("Run-Tests");
 
 RunTarget(target);
