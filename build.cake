@@ -19,7 +19,7 @@ var iOSProject = GetFiles("./src/ios/Cake.Xamarin.Sample.iOS/*.csproj").First();
 
 // Tests.
 var testsProject = GetFiles("./test/**/*.csproj").First();
-// NOTE: (assumes Tests projects end with .Tests)
+// NOTE: (assumes Tests projects end with .Tests).
 var testsDllPath = string.Format("./test/Cake.Xamarin.Sample.Tests/bin/{0}/*.Tests.dll", configuration);
 
 // Output folders.
@@ -107,10 +107,10 @@ Task("Build-Android")
 	.IsDependentOn("Prepare-Build")
     .Does(() =>
 	{ 		
-		 DotNetBuild(androidProject, settings =>
-        	settings.SetConfiguration(configuration)           
-            .WithProperty("DebugSymbols", "false")
-            .WithProperty("TreatWarningsAsErrors", "false")
+		DotNetBuild(androidProject, settings =>
+			settings.SetConfiguration(configuration)           
+			.WithProperty("DebugSymbols", "false")
+			.WithProperty("TreatWarningsAsErrors", "false")
 			.SetVerbosity(Verbosity.Minimal));
     });
 
@@ -118,13 +118,13 @@ Task("Build-iOS")
 	.IsDependentOn("Prepare-Build")
     .Does (() =>
 	{
-    DotNetBuild(iOSProject, settings => 
-		  settings.SetConfiguration(configuration)   
-		  .WithTarget("Build")
-          .WithProperty("Platform", "iPhoneSimulator")
-          .WithProperty("OutputPath", iOSOutputDirectory)
-          .WithProperty("TreatWarningsAsErrors", "false")
-		  .SetVerbosity(Verbosity.Minimal));
+    	DotNetBuild(iOSProject, settings => 
+			settings.SetConfiguration(configuration)   
+			.WithTarget("Build")
+			.WithProperty("Platform", "iPhoneSimulator")
+			.WithProperty("OutputPath", iOSOutputDirectory)
+			.WithProperty("TreatWarningsAsErrors", "false")
+			.SetVerbosity(Verbosity.Minimal));
 	});
 
 Task("Default")
