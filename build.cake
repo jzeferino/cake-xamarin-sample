@@ -70,7 +70,7 @@ Task("Restore-Packages")
 Task("Run-StyleCop")	
 	// Allows the build process to continue even if there is erros reported by StyleCop.
 	.ContinueOnError()
-    .Does(() =>
+    	.Does(() =>
 	{        
 		StyleCopAnalyse(settings => settings
 			.WithSolution(solutionFile)
@@ -82,7 +82,7 @@ Task("Run-Tests")
 	// Allows the build process to continue even if there Tests aren't passing.
 	.ContinueOnError()
 	.IsDependentOn("Prepare-Build")
-    .Does(() =>
+    	.Does(() =>
 	{		
 		DotNetBuild(testsProject.FullPath, settings => settings
 			.SetConfiguration(configuration)
@@ -99,13 +99,13 @@ Task("Run-Tests")
 
 Task("Prepare-Build")
 	.IsDependentOn("Clean")
-    .IsDependentOn("Restore-Packages")
+    	.IsDependentOn("Restore-Packages")
 	.IsDependentOn("Restore-XamarinComponents")	
-    .Does (() => {});
+    	.Does (() => {});
 
 Task("Build-Android")
 	.IsDependentOn("Prepare-Build")
-    .Does(() =>
+    	.Does(() =>
 	{ 		
 		DotNetBuild(androidProject, settings =>
 			settings.SetConfiguration(configuration)           
@@ -116,9 +116,9 @@ Task("Build-Android")
 
 Task("Build-iOS")
 	.IsDependentOn("Prepare-Build")
-    .Does (() =>
+    	.Does (() =>
 	{
-    	DotNetBuild(iOSProject, settings => 
+    		DotNetBuild(iOSProject, settings => 
 			settings.SetConfiguration(configuration)   
 			.WithTarget("Build")
 			.WithProperty("Platform", "iPhoneSimulator")
@@ -128,8 +128,8 @@ Task("Build-iOS")
 	});
 
 Task("Default")
-    .IsDependentOn("Build-Android")
-    .IsDependentOn("Build-iOS")
+    	.IsDependentOn("Build-Android")
+    	.IsDependentOn("Build-iOS")
 	.IsDependentOn("Run-StyleCop")
 	.IsDependentOn("Run-Tests");
 
