@@ -5,25 +5,25 @@ Plus, the script runs [xUnit](http://cakebuild.net/dsl/xunit-v2) tests, and [Sty
 
 What the script does:
 
-- Clean the solution and artifacts folder.
-- Restore NuGet packages and Xamarin Components.
-- Build Android project.
-- Build iOS project.
-- Run StyleCop.
-- Run xUnit tests.
-- Write the xUnit tests result and StyleCop output to the artifacts folder.
+1. Clean the solution and artifacts folder.
+2. Restore NuGet packages and Xamarin Components.
+3. Build Android project.
+4. Build iOS project.
+5. Run StyleCop.
+6. Run xUnit tests.
+8. Write the xUnit tests result and StyleCop output to the artifacts folder.
 
 What's part of the solution:
 
-- Cake.Xamarin.Sample.Shared => A Portable Class Library (PCL) with shared code between Xamarin.Android and Xamarin.iOS.
-- Cake.Xamarin.Sample.Tests => A PCL with tests over shared code PCL.
-- Cake.Xamarin.Sample.Android => A Android project that uses the shared code PCL.
-- Cake.Xamarin.Sample.iOS => A iOS project that uses the shared code PCL.
+- `Cake.Xamarin.Sample.Shared` => A Portable Class Library (PCL) with shared code between Xamarin.Android and Xamarin.iOS.
+- `Cake.Xamarin.Sample.Tests` => A PCL with tests over shared code PCL.
+- `Cake.Xamarin.Sample.Android` => A Android project that uses the shared code PCL.
+- `Cake.Xamarin.Sample.iOS` => A iOS project that uses the shared code PCL.
 
 ## Requirements
 
 1. xbuild (Linux and OS X) or msbuild (Windows) installed.
-1. .NET Core, .NET 4.5 and Mono installed.
+1. .NET Core, .NET 4.5 or Mono installed.
 1. Terminal or Powershell.
 
 ## How to run it 
@@ -34,5 +34,5 @@ What's part of the solution:
 
 ### Aditional notes 
 
-- To use a specific Xamarin account to restore Xamarin Components `./build.sh -ScriptArgs -xamarin_username="youremail@example.com" -xamarin_password="password"`.
+- To use a specific Xamarin account to restore Xamarin Components: `./build.sh -ScriptArgs -xamarin_username="youremail@example.com" -xamarin_password="password"`.
 - To run a specific Task like build only android or ios: `./build.sh -t Build-Android` or `./build.sh -t Build-iOS`.
