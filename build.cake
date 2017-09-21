@@ -1,8 +1,8 @@
-#addin "Cake.Xamarin&version=1.3.0.6"
-#addin "nuget:?package=Cake.StyleCop&version=1.1.2"
+#addin "Cake.Xamarin&version=1.3.0.15"
+#addin "nuget:?package=Cake.StyleCop&version=1.1.3"
 
 #tool "xunit.runner.console&version=2.1.0"
-#tool "XamarinComponent&version=1.1.0.39"
+#tool "XamarinComponent&version=1.1.0.60"
 
 // Arguments.
 var target = Argument("target", "Default");
