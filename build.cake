@@ -2,7 +2,6 @@
 #addin "nuget:?package=Cake.StyleCop&version=1.1.3"
 
 #tool "xunit.runner.console&version=2.1.0"
-#tool "XamarinComponent&version=1.1.0.60"
 
 // Arguments.
 var target = Argument("target", "Default");
@@ -26,11 +25,6 @@ var testsDllPath = string.Format("./test/Cake.Xamarin.Sample.Tests/bin/{0}/*.Tes
 var artifactsDirectory = Directory("./artifacts");
 var iOSOutputDirectory = "bin/iPhoneSimulator";
 
-// Xamarin Component.
-var xamarinComponetPath = "./tools/XamarinComponent/tools/xamarin-component.exe";
-var XamarinComponetEmail = xamarinUsername;
-var XamarinComponetPassword = XamarinPassword;
-
 // StyleCop.
 var styleCopPath = File("./settings.stylecop");
 var styleCopResultFile = File("StylecopResults.xml");
@@ -49,17 +43,7 @@ Task("Clean")
 			.SetVerbosity(Verbosity.Minimal));
 	});
 
-Task("Restore-XamarinComponents")
-	.Does(() => 
-	{
-		RestoreComponents(solutionFile, 
-			new XamarinComponentRestoreSettings 
-			{
-				ToolPath = xamarinComponetPath,
-				Email = XamarinComponetEmail,
-				Password = XamarinComponetPassword
-			});
-	});
+
 
 Task("Restore-Packages")
 	.Does(() => 
@@ -100,8 +84,7 @@ Task("Run-Tests")
 Task("Prepare-Build")
 	.IsDependentOn("Clean")
 	.IsDependentOn("Restore-Packages")
-	.IsDependentOn("Restore-XamarinComponents")	
-    	.Does (() => {});
+   	.Does (() => {});
 
 Task("Build-Android")
 	.IsDependentOn("Prepare-Build")
